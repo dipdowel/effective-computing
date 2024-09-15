@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if a parameter is given, otherwise set it to 1
+num_runs=${1:-1}
+
+# Ensure the parameter is numeric
+if ! [[ "$num_runs" =~ ^[0-9]+$ ]]; then
+    echo "Error: Parameter must be a numeric value, it defines how many times to run each test."
+    exit 1
+fi
+
+echo -e "\nEach test will be run $num_runs time(s)"
+echo -e "Specify a custom number of runs as follows: $0 <number>\n"
+cd node-js
+./runme $num_runs
+cd ../python
+./runme $num_runs
+cd ../java
+./runme $num_runs
+cd ../go
+./runme $num_runs
+cd ../rust
+./runme $num_runs
+cd ..
+echo -e "Done!\n"

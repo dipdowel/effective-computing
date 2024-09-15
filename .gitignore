@@ -1,0 +1,28 @@
+## ===[ BACKEND ]==========================================================================
+# Don't commit the large decompressed text file (`test-data.zip` is committed instead)
+backend/test-data/test-data.txt
+
+# Don't commit binary Java
+backend/java/*.class
+#./java/WordCount.class
+#java/WordCount.class
+
+
+# Don't commit generated output
+backend/node-js/output
+backend/python/output
+backend/java/output
+backend/rust/output
+
+
+# IDE files
+backend/rust/.idea
+backend/node-js/.idea
+
+# local Rust files
+backend/rust/target
+
+# Go compiled file
+backend/go/tfreq
+
+## ===[ FRONTEND ]==========================================================================

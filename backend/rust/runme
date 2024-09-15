@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Check if an argument is provided and if it is a valid positive integer
+if [[ $# -ne 1 ]] || ! [[ "$1" =~ ^[0-9]+$ ]]; then
+    echo "Usage: $0 <number_of_executions>"
+    echo "Please provide a valid positive integer."
+    exit 1
+fi
+
+echo "======================================="
+echo " Rust :: Effective computing benchmark"
+echo "======================================="
+
+# Loop based on the provided argument
+for ((i=1; i<=$1; i++))
+do
+    echo "Execution #$i"
+    rm -f output
+
+/usr/bin/time -f "Memory, KiB:\t\t %M\n"\
+"CPU, seconds:\n\t\treal\t %e\n\t\tuser\t %U\n\t\t sys\t %S\n"\
+"CPU usage: %P, Involuntary context switches: %c, "\
+"Swaps: %W, Exit status: %x" \
+./target/release/rust \
+../test-data/test-data.txt output
+
+    ls -l output
+    echo ""
+done
+
+
+

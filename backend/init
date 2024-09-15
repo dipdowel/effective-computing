@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# Function to check if a command exists
+check_command() {
+    if command -v $1 &> /dev/null
+    then
+        echo "[+] $1 is installed."
+    else
+        echo -e "\e[31m[-] $1 not found. Please install it.\e[0m"
+        exit 1
+    fi
+}
+
+echo ""
+echo "==================================================================="
+echo " Welcome to Node.js vs. Python3 vs. Java vs. Rust performance test"
+echo "==================================================================="
+echo ""
+echo "Checking prerequisites..."
+echo ""
+
+# Check Node.js
+check_command "node"
+
+# Check Python3
+check_command "python3"
+
+# Check unzip
+check_command "unzip"
+
+# Check Java Development Kit (JDK)
+if command -v javac &> /dev/null
+then
+    echo "[+] JDK is installed."
+else
+    echo -e "\e[31m[-] JDK not found. Please install it.\e[0m"
+    exit 1
+fi
+
+# Check Java Runtime Environment (JRE)
+if command -v java &> /dev/null
+then
+    echo "[+] JRE is installed."
+else
+    echo -e "\e[31m[-] JRE not found. Please install it.\e[0m"
+    exit 1
+
+fi
+
+# Check GoLang
+if command -v go &> /dev/null
+then
+    echo "[+] GoLang is installed."
+else
+    echo -e "\e[31m[-] GoLang not found. Please install it.\e[0m"
+    exit 1
+
+fi
+
+# Check Rust toolchain
+if command -v rustc &> /dev/null && command -v cargo &> /dev/null
+then
+    echo "[+] Rust toolchain (rustc and cargo) is installed."
+else
+    echo -e "\e[31m[-] Rust toolchain not found. Please install it.\e[0m"
+    exit 1
+fi
+
+echo ""
+echo "Found all the prerequisites!"
+echo "Decompressing the test data..."
+unzip -o -d ./test-data/ ./test-data/test-data.zip
+echo "building the Java test program..."
+javac -d ./java ./java/WordCount.java
+
+echo "building the GoLang test program..."
+cd go
+go build -ldflags="-s -w" -o tfreq text-freq.go
+cd ..
+
+echo "building the Rust test program..."
+cd rust 
+cargo build --release
+cd ..
+echo ""
+echo "All finished."
+echo "No errors above? Then ./run-tests should work now."
+echo ""

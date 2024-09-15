@@ -1,0 +1,5 @@
+#!/bin/bash
+echo ""
+echo ""
+echo "[!] Enforcing execution on a single core [!]"
+taskset -c 0 ./runme
