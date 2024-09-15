@@ -1,6 +1,6 @@
 # Web  backend performance research
 
-The goal of this project is to provide a benchmark for CPU and memory performance across various technologies used in web development. You can [run all the tests yourself](#how-to-run-the-tests) on a desired machine. Below are the results achieved on a particular system configuration. Please refer to section [Methodology](#methodology) for details and explanations.
+The goal of this project is to provide a benchmark for CPU and memory performance across various technologies used in web development. You can [run all the tests yourself](#how-to-run-the-tests) on a desired machine. Below are the results achieved on a [particular system configuration](#system-configuration). Please refer to section [Methodology](#methodology) for details and explanations.
 
 If you achieve different results, want to share results for another configuration, or have any other feedback, please feel free to get in touch by starting a [github discussion](https://github.com/dipdowel/effective-computing/discussions). Thank you!
 
