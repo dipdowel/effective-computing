@@ -90,7 +90,7 @@ Total online memory:    15,5G
 ## Quick start
 1. Clone this repo
 2. Make sure all the prerequisites mentioned above are installed
-3. `cd effective-computing/backend && chmod +x init && ./init && chmod +x run-tests`
+3. `cd efficient-computing/backend && chmod +x init && ./init && chmod +x run-tests`
 4. `./run-tests` 
 
 **NB:** `./run-tests 7`  will run each test 7 times, i.e. you can specify how many times each test should run by providing a positive integer as an argument. 
